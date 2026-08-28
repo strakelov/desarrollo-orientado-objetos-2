@@ -4,6 +4,10 @@ public class PedidoEncomienda extends Pedido {
     private double peso;
     private boolean tieneEmbalaje;
 
+    private final int TIEMPO_BASE_MINUTOS = 20;
+    private final double MULTIPLICADOR_DISTANCIA = 1.5;
+    private final double PESO_MAXIMO = 50.0;
+
     public PedidoEncomienda(int idPedido, String direccionEntrega, double distanciaKm, double peso, boolean tieneEmbalaje) {
         super(idPedido, direccionEntrega, distanciaKm);
         this.peso = peso;
@@ -16,14 +20,14 @@ public class PedidoEncomienda extends Pedido {
     }
 
     @Override
-    public void calcularTiempoEntrega() {
-        int tiempo = (int) Math.round(20 + (1.5 * distanciaKm));
-        System.out.println("Tiempo estimado de entrega: " + tiempo + " minutos.\n");
+    public String calcularTiempoEntrega() {
+        int tiempo = (int) Math.round(TIEMPO_BASE_MINUTOS + (MULTIPLICADOR_DISTANCIA * distanciaKm));
+        return "Tiempo estimado de entrega: " + tiempo + " minutos.";
     }
 
     @Override
     public String asignarRepartidor() {
-        if(peso >= 50 || !tieneEmbalaje) {
+        if(peso >= PESO_MAXIMO || !tieneEmbalaje) {
             return "El pedido de encomienda no tiene embalaje o el peso es muy alto.";
         }
 
@@ -32,7 +36,7 @@ public class PedidoEncomienda extends Pedido {
 
     @Override
     public String asignarRepartidor(String nombreRepartidor) {
-        if(peso >= 50 || !tieneEmbalaje) {
+        if(peso >= PESO_MAXIMO || !tieneEmbalaje) {
             return "El pedido de encomienda no tiene embalaje o el peso es muy alto.";
         }
 
@@ -57,7 +61,7 @@ public class PedidoEncomienda extends Pedido {
 
     @Override
     public String toString() {
-        return "PedidoEncomienda{" +
+        return super.toString() + " - PedidoEncomienda{" +
                 "peso=" + peso +
                 ", tieneEmbalaje=" + tieneEmbalaje +
                 '}';

@@ -3,6 +3,9 @@ package model;
 public class PedidoComida extends Pedido {
     private boolean tieneMochila;
 
+    private final int TIEMPO_BASE_MINUTOS = 15;
+    private final int MULTIPLICADOR_DISTANCIA = 2;
+
     public PedidoComida(int idPedido, String direccionEntrega, double distanciaKm, boolean tieneMochila) {
         super(idPedido, direccionEntrega, distanciaKm);
         this.tieneMochila = tieneMochila;
@@ -14,9 +17,9 @@ public class PedidoComida extends Pedido {
     }
 
     @Override
-    public void calcularTiempoEntrega() {
-        int tiempo = (int) Math.round(15 + (2 * distanciaKm));
-        System.out.println("Tiempo estimado de entrega: " + tiempo + " minutos.\n");
+    public String calcularTiempoEntrega() {
+        int tiempo = (int) Math.round(TIEMPO_BASE_MINUTOS + (MULTIPLICADOR_DISTANCIA * distanciaKm));
+        return "Tiempo estimado de entrega: " + tiempo + " minutos.";
     }
 
     @Override
@@ -37,17 +40,12 @@ public class PedidoComida extends Pedido {
         return "El repartidor de comida " + nombreRepartidor + " va en camino";
     }
 
-    public boolean isTieneMochila() {
-        return tieneMochila;
-    }
-
-    public void setTieneMochila(boolean tieneMochila) {
-        this.tieneMochila = tieneMochila;
-    }
+    public boolean isTieneMochila() {return tieneMochila;}
+    public void setTieneMochila(boolean tieneMochila) {this.tieneMochila = tieneMochila;}
 
     @Override
     public String toString() {
-        return "PedidoComida{" +
+        return super.toString() + " - PedidoComida{" +
                 "tieneMochila=" + tieneMochila +
                 '}';
     }
