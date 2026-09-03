@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Pedido implements Despachable, Cancelable {
+public abstract class Pedido implements Despachable, Cancelable, Rastreable {
     protected int idPedido;
     protected String direccionEntrega;
     protected double distanciaKm;
@@ -20,16 +20,21 @@ public abstract class Pedido implements Despachable, Cancelable {
     }
 
     @Override
-    public void despachar() {
-        System.out.println(getTipoPedido() + " despachado correctamente.\n");
+    public String despachar() {
         this.estado = "Despachado";
+        return getTipoPedido() + " despachado correctamente.\n";
     }
 
     @Override
-    public void cancelar() {
-        System.out.println("Cancelando " + getTipoPedido() + " #" + getIdPedido());
-        System.out.println("-> " + getTipoPedido() + " cancelado correctamente.\n");
+    public String cancelar() {
         this.estado = "Cancelado";
+        return "Cancelando " + getTipoPedido() + " #" + getIdPedido() + "\n" +
+                "-> " + getTipoPedido() + " cancelado correctamente.\n\n";
+    }
+
+    @Override
+    public String verHistorial() {
+        return "- " + getTipoPedido() + " #" + getIdPedido() + " - " + getEstado();
     }
 
     public abstract String getTipoPedido();
