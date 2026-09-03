@@ -1,4 +1,4 @@
-# Actividad Sumativa S3 – DOO II
+# Actividad Formativa S4 – DOO II
 - **Nombre completo:** Gabriel Alejandro Gomez Pizarro
 - **Carrera:** Analista Programador Computacional
 - **Sección:** 005A
@@ -8,7 +8,7 @@
 
 ## Descripción general del sistema
 
-Este proyecto consiste en una aplicación con interfaz gráfica desarrollada en java para la empresa SpeedFast. Su objetivo principal es representar las diferentes entidades de la empresa, aplicando conceptos de desacoplamiento, herencia y polimorfismo.
+Este programa de consola desarrollado en java consiste en representar el desarrollo concurrente de tareas a través de un sistema de pedidos, aplicando conceptos de concurrencia, herencia y polimorfismo.
 
 ---
 
@@ -38,4 +38,4 @@ git clone https://github.com/strakelov/desarrollo-orientado-objetos-2
 
 ---
 
-**Fecha de entrega:** 28/08/2026
+**Fecha de entrega:** 03/09/2026
