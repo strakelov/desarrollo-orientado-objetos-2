@@ -25,24 +25,6 @@ public class PedidoEncomienda extends Pedido {
         return "Tiempo estimado de entrega: " + tiempo + " minutos.";
     }
 
-    @Override
-    public String asignarRepartidor() {
-        if(peso >= PESO_MAXIMO || !tieneEmbalaje) {
-            return "El pedido de encomienda no tiene embalaje o el peso es muy alto.";
-        }
-
-        return "El pedido de encomienda va en camino a " + direccionEntrega;
-    }
-
-    @Override
-    public String asignarRepartidor(String nombreRepartidor) {
-        if(peso >= PESO_MAXIMO || !tieneEmbalaje) {
-            return "El pedido de encomienda no tiene embalaje o el peso es muy alto.";
-        }
-
-        return "El repartidor de encomienda " + nombreRepartidor + " va en camino";
-    }
-
     public double getPeso() {
         return peso;
     }

@@ -34,8 +34,6 @@ public abstract class Pedido implements Despachable, Cancelable {
 
     public abstract String getTipoPedido();
     public abstract String calcularTiempoEntrega();
-    public abstract String asignarRepartidor();
-    public abstract String asignarRepartidor(String nombreRepartidor);
 
     public int getIdPedido() {return idPedido;}
     public void setIdPedido(int idPedido) {this.idPedido = idPedido;}

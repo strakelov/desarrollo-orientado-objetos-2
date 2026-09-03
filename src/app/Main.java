@@ -1,32 +1,37 @@
 package app;
 
-import data.Gestor;
 import model.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
-        Gestor gestor = new Gestor();
+        List<Pedido> pedidosRepartidor1 = new ArrayList<>();
+        List<Pedido> pedidosRepartidor2 = new ArrayList<>();
+        List<Pedido> pedidosRepartidor3 = new ArrayList<>();
 
-        gestor.agregarPedido(new PedidoComida(2392, "Av. San Lorenzo #239", 24, true));
-        gestor.agregarPedido(new PedidoEncomienda(3290, "Av. Falsa #432", 25, 42, true));
-        gestor.agregarPedido(new PedidoExpress(2039, "Av. San Juan #234", 36, false));
+        try (ExecutorService executor = Executors.newFixedThreadPool(3)) {
 
-        System.out.println("===== RESUMEN DE PEDIDOS =====");
-        Pedido pedido1 = gestor.getListaPedidos().get(0);
-        System.out.println(pedido1.mostrarResumen());
-        System.out.println(pedido1.asignarRepartidor() + "\n");
-        pedido1.despachar();
+            pedidosRepartidor1.add(new PedidoComida(2392, "Av. San Lorenzo #239", 24, true));
+            pedidosRepartidor1.add(new PedidoEncomienda(3290, "Av. Falsa #432", 25, 42, true));
+            Repartidor repartidor1 = new Repartidor("Vicente", pedidosRepartidor1);
+            executor.execute(repartidor1);
 
-        Pedido pedido2 = gestor.getListaPedidos().get(1);
-        System.out.println(pedido2.mostrarResumen());
-        System.out.println(pedido2.asignarRepartidor("Carlos") + "\n");
+            pedidosRepartidor2.add(new PedidoExpress(2039, "Av. San Juan #234", 36, true));
+            pedidosRepartidor2.add(new PedidoComida(9284, "Av. San Pedro #449", 56, true));
+            Repartidor repartidor2 = new Repartidor("Sebastian", pedidosRepartidor2);
+            executor.execute(repartidor2);
 
-        Pedido pedido3 = gestor.getListaPedidos().get(2);
-        System.out.println(pedido3.mostrarResumen());
-        System.out.println(pedido3.asignarRepartidor("Laura") + "\n");
-        pedido3.cancelar();
+            pedidosRepartidor3.add(new PedidoEncomienda(2982, "Av. Diego #187", 65, 24, true));
+            pedidosRepartidor3.add(new PedidoExpress(9208, "Av. Rafael #783", 59, true));
+            Repartidor repartidor3 = new Repartidor("Daniel", pedidosRepartidor3);
+            executor.execute(repartidor3);
 
-        System.out.println("===== HISTORIAL =====");
-        gestor.verHistorial();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Numero de hilos disponibles igual o menor a 0.");
+        }
     }
 }

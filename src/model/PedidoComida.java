@@ -22,24 +22,6 @@ public class PedidoComida extends Pedido {
         return "Tiempo estimado de entrega: " + tiempo + " minutos.";
     }
 
-    @Override
-    public String asignarRepartidor() {
-        if(!tieneMochila) {
-            return "El repartidor de comida no tiene mochila termica.";
-        }
-
-        return "El pedido de comida va en camino a " + direccionEntrega;
-    }
-
-    @Override
-    public String asignarRepartidor(String nombreRepartidor) {
-        if(!tieneMochila) {
-            return "El repartidor de comida " + nombreRepartidor + " no tiene mochila termica.";
-        }
-
-        return "El repartidor de comida " + nombreRepartidor + " va en camino";
-    }
-
     public boolean isTieneMochila() {return tieneMochila;}
     public void setTieneMochila(boolean tieneMochila) {this.tieneMochila = tieneMochila;}
 

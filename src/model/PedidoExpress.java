@@ -25,32 +25,6 @@ public class PedidoExpress extends Pedido {
     }
 
     @Override
-    public String asignarRepartidor() {
-        if(!repartidorDisponible) {
-            return "El repartidor express no está diponible";
-        }
-
-        return "El pedido express va en camino a " + direccionEntrega;
-    }
-
-    @Override
-    public String asignarRepartidor(String nombreRepartidor) {
-        if(!repartidorDisponible) {
-            return "El repartidor express " + nombreRepartidor + " no está disponible.";
-        }
-
-        return "El repartidor express " + nombreRepartidor + " va en camino";
-    }
-
-    public boolean isRepartidorDisponible() {
-        return repartidorDisponible;
-    }
-
-    public void setRepartidorDisponible(boolean repartidorDisponible) {
-        this.repartidorDisponible = repartidorDisponible;
-    }
-
-    @Override
     public String toString() {
         return super.toString() + " - PedidoExpress{" +
                 "repartidorDisponible=" + repartidorDisponible +
