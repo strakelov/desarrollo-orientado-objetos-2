@@ -17,7 +17,6 @@ Este programa de consola desarrollado en java consiste en representar el desarro
 ```plaintext
 📁 src/
 ├── app/      # Clase principal
-├── data/      # Clase gestor de datos
 ├── model/    # Jerarquia de entidades
 ````
 
