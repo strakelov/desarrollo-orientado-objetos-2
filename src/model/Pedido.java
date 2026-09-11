@@ -4,7 +4,7 @@ public abstract class Pedido implements Despachable, Cancelable, Rastreable {
     protected int idPedido;
     protected String direccionEntrega;
     protected double distanciaKm;
-    protected String estado = "Pendiente";
+    protected Estado estado = Estado.PENDIENTE;
 
     public Pedido(int idPedido, String direccionEntrega, double distanciaKm) {
         this.idPedido = idPedido;
@@ -21,13 +21,11 @@ public abstract class Pedido implements Despachable, Cancelable, Rastreable {
 
     @Override
     public String despachar() {
-        this.estado = "Despachado";
         return getTipoPedido() + " despachado correctamente.\n";
     }
 
     @Override
     public String cancelar() {
-        this.estado = "Cancelado";
         return "Cancelando " + getTipoPedido() + " #" + getIdPedido() + "\n" +
                 "-> " + getTipoPedido() + " cancelado correctamente.\n\n";
     }
@@ -49,8 +47,8 @@ public abstract class Pedido implements Despachable, Cancelable, Rastreable {
     public double getDistanciaKm() {return distanciaKm;}
     public void setDistanciaKm(double distanciaKm) {this.distanciaKm = distanciaKm;}
 
-    public String getEstado() {return estado;}
-    public void setEstado(String estado) {this.estado = estado;}
+    public Estado getEstado() {return estado;}
+    public void setEstado(Estado estado) {this.estado = estado;}
 
     @Override
     public String toString() {

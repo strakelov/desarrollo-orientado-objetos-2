@@ -1,31 +1,39 @@
 package model;
 
-import java.util.List;
 import java.util.Random;
 
 public class Repartidor implements Runnable {
     private final String nombre;
-    private final List<Pedido> pedidos;
+    private final ZonaCarga zonaCarga;
 
-    private static final Random random = new Random();
+    private final Random random = new Random();
 
-    public Repartidor(String nombre, List<Pedido> pedidos) {
+    public Repartidor(String nombre, ZonaCarga zonaCarga) {
         this.nombre = nombre;
-        this.pedidos = pedidos;
+        this.zonaCarga = zonaCarga;
     }
 
     @Override
     public void run() {
-        for(Pedido pedido : pedidos) {
+        while(!Thread.currentThread().isInterrupted()) {
+            Pedido pedidoRetirado = zonaCarga.retirarPedido();
+            if(pedidoRetirado == null) {
+                System.out.println("[Repartidor " + nombre + "] No hay pedidos pendientes.");
+                break;
+            }
+            pedidoRetirado.setEstado(Estado.EN_REPARTO);
+
             try {
-                Thread.sleep(random.nextInt(10) * 2000);
-                System.out.println("Pedido realizado. ID: #" + pedido.getIdPedido());
-                Thread.sleep(random.nextInt(7) * 2000);
-                System.out.println("[Repartidor: " + nombre + "] " + pedido.getTipoPedido() + " #" + pedido.getIdPedido() + " en camino.");
-                Thread.sleep(random.nextInt(5) * 2000);
-                System.out.println(pedido.despachar());
+                Thread.sleep(random.nextInt(3000) + 1000);
+                System.out.println("[Repartidor " + nombre + "] Pedido en camino...");
+                Thread.sleep(random.nextInt(2000) + 1000);
+
+                System.out.println("[Repartidor " + nombre + "] Pedido entregado correctamente.");
+                pedidoRetirado.setEstado(Estado.ENTREGADO);
             } catch (InterruptedException e) {
-                System.out.println("Entrega interrumpida del pedido #" + pedido.getIdPedido());
+                System.out.println("[Repartidor " + nombre + "] Entrega interrumpida. Cancelando ruta.");
+                Thread.currentThread().interrupt();
+                return;
             }
         }
     }
