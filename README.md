@@ -1,4 +1,4 @@
-# Actividad Formativa S4 – DOO II
+# Actividad Sumativa S5 – DOO II
 - **Nombre completo:** Gabriel Alejandro Gomez Pizarro
 - **Carrera:** Analista Programador Computacional
 - **Sección:** 005A
@@ -17,7 +17,7 @@ Este programa de consola desarrollado en java consiste en representar el desarro
 ```plaintext
 📁 src/
 ├── app/      # Clase principal
-├── model/    # Jerarquia de entidades
+├── model/    # Entidades e interfaces
 ````
 
 ---
@@ -33,8 +33,8 @@ git clone https://github.com/strakelov/desarrollo-orientado-objetos-2
 
 2. Abre el proyecto en IntelliJ IDEA.
 
-3. Ejecuta el archivo `Main.java` ubicado en `Practica/src/app/Main.java`.
+3. Ejecuta el archivo `Main.java` ubicado en `src/app/Main.java`.
 
 ---
 
-**Fecha de entrega:** 03/09/2026
+**Fecha de entrega:** 11/09/2026
