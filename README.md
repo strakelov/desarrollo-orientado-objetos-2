@@ -1,4 +1,4 @@
-# Actividad Formativa S8 – DOO II
+# Actividad Sumativa S8 – DOO II
 - **Nombre completo:** Gabriel Alejandro Gomez Pizarro
 - **Carrera:** Analista Programador Computacional
 - **Sección:** 005A
