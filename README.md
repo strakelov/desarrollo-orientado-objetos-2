@@ -1,4 +1,4 @@
-# Actividad Sumativa S5 – DOO II
+# Actividad Formativa S6 – DOO II
 - **Nombre completo:** Gabriel Alejandro Gomez Pizarro
 - **Carrera:** Analista Programador Computacional
 - **Sección:** 005A
@@ -8,7 +8,7 @@
 
 ## Descripción general del sistema
 
-Este programa de consola desarrollado en java consiste en representar el desarrollo concurrente de tareas a través de un sistema de pedidos, aplicando conceptos de concurrencia, herencia y polimorfismo.
+Este programa con interfaz de usuario desarrollado en java consiste en representar la gestión de pedidos y su desarrollo concurrente de tareas, aplicando conceptos de concurrencia, herencia y polimorfismo.
 
 ---
 
@@ -16,8 +16,10 @@ Este programa de consola desarrollado en java consiste en representar el desarro
 
 ```plaintext
 📁 src/
-├── app/      # Clase principal
-├── model/    # Entidades e interfaces
+├── app/         # Clase principal
+├── controller/  # Clase Gestor
+├── model/       # Entidades e interfaces
+├── view/        # Vistas de usuario
 ````
 
 ---
@@ -37,4 +39,4 @@ git clone https://github.com/strakelov/desarrollo-orientado-objetos-2
 
 ---
 
-**Fecha de entrega:** 11/09/2026
+**Fecha de entrega:** 21/09/2026
