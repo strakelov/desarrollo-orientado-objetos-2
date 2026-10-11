@@ -42,13 +42,14 @@ Este programa con interfaz de usuario desarrollado en java implementa un sistema
 ├── util/                            # Clases de conexión y Excepción personalizada
 │   ├── ConexionBD.java
 │   └── RutInvalidoException.java
-└── vista/                           # Interfaz gráfica de usuario
-    ├── Login.java
-    ├── PanelEstudiantes.java
-    ├── PanelLibros.java
-    ├── PanelPrestamos.java
-    ├── PanelReportes.java
-    └── VentanaPrincipal.java
+├── vista/                           # Interfaz gráfica de usuario
+│   ├── Login.java
+│   ├── PanelEstudiantes.java
+│   ├── PanelLibros.java
+│   ├── PanelPrestamos.java
+│   ├── PanelReportes.java
+│   └── VentanaPrincipal.java
+└── script.sql                      # Script SQL con la creación y poblamiento de la BD
 ````
 
 ---
